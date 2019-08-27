@@ -1,0 +1,7 @@
+{% for post in user_posts %}
+<ul class="pr-2">
+    <a class="text-dark" href="#">{{post.title}}</a>
+</ul>
+{% empty %}
+<h4 class="text-center mb-5">No Posts</h4>
+{% endfor %}

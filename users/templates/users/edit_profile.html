@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="border p-4 mb-5">
+    <legend class="border-bottom pb-1 mb-3">Edit Profile</legend>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <img src="{{user.profile.image.url}}" class="img-fluid rounded-circle border m-2" style="width: 120px; height:120px;">
+        <span class="mb-2" style="display: block">Upload a different photo...</span>
+        current photo: <a href="{{user.profile.image.url}}">{{user.profile.image}}</a>
+        <label for="image" class="btn btn-outline-dark mt-2">Choose File</label>
+        <input type="file" name="image" id="image" accept="image/*" style="display: none">
+        {{user_form|crispy}}
+        <input class="btn btn-dark mt-4" type="submit" value="Save Changes">
+    </form>
+</div>
+{% endblock content %}
